@@ -99,9 +99,10 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     fi
 
     echo "cp kubectl_aliases"
-    `cp .kubectl_aliases ~/.kubectl_aliases`
+    cp .kubectl_aliases ~/.kubectl_aliases
     sed -i "/kubectl_aliases/d" ~/.bashrc
     echo "[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases" >> ~/.bashrc
+    source ~/.bashrc
 fi
 
 # 查看 kubelet 情况
