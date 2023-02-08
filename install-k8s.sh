@@ -75,7 +75,9 @@ fi
 
 echo 配置containerd
 if [ -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
-  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
+    echo "exit cri-containerd-cni-1.6.16-linux-amd64.tar.gz file"
+  else
     echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l
     rm -rf cri-containerd-cni-1.6.16-linux-amd64.tar.gz
   fi
@@ -84,7 +86,7 @@ fi
 if [ ! -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
   echo "start download cri-containerd-cni-1.6.16-linux-amd64.tar.gz from github"
   wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
-  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
     echo 'download finsh from github'
   else
     echo "download failure from github, need wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz"
@@ -246,7 +248,9 @@ rpm -qa | grep libseccomp
 
 echo 配置containerd
 if [ -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
-  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
+    echo "exit cri-containerd-cni-1.6.16-linux-amd64.tar.gz file"
+  else
     echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l
     rm -rf cri-containerd-cni-1.6.16-linux-amd64.tar.gz
   fi
@@ -255,7 +259,7 @@ fi
 if [ ! -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
   echo "start download cri-containerd-cni-1.6.16-linux-amd64.tar.gz from github"
   wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
-  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
     echo 'download finsh from github'
   else
     echo "download failure from github, need wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz"
