@@ -17,19 +17,21 @@ apiserverBindPort=$APISERVER_BIND_PORT
 controlPlaneEndpoint=$CONTROL_PLANE_ENDPOINT
 k8sToken=$K8S_TOKEN
 
+echo "cp files"
 cp kubeadm-config.yml.tpl kubeadm-config.yml
 cp calico.yaml.tpl calico.yaml
 
+echo "set var to kubeadm-config.yml"
 sed -i "s/<ADVERTISE_ADDRESS>/$apiserverAdvertiseAddress/g" kubeadm-config.yml
 sed -i "s/<BIND_PORT>/$apiserverBindPort/g" kubeadm-config.yml
 sed -i "s/<MY_HOSTNAME>/$MY_HOSTNAME/g" kubeadm-config.yml
 
 if [ "$INTERFACE_NAME" != "" ]; then
-    sed -i "s/<INTERFACE_NAME>/$INTERFACE_NAME/g" calico.yml
+    sed -i "s/<INTERFACE_NAME>/$INTERFACE_NAME/g" calico.yaml
 else
-    sed -i "/指定网卡/d" calico.yml
-    sed -i "/<IP_AUTODETECTION_METHOD>/d" calico.yml
-    sed -i "/<INTERFACE_NAME>/d" calico.yml
+    sed -i "/指定网卡/d" calico.yaml
+    sed -i "/<IP_AUTODETECTION_METHOD>/d" calico.yaml
+    sed -i "/<INTERFACE_NAME>/d" calico.yaml
 fi
 
 if [ "$controlPlaneEndpoint" != "" ]; then
