@@ -103,7 +103,6 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     echo "set service-node-port-range=1-65535 to /etc/kubernetes/manifests/kube-apiserver.yaml"
     sed -i "/- --service-node-port-range=1-65535/d" /etc/kubernetes/manifests/kube-apiserver.yaml
     sed -i "s#- kube-apiserver#- kube-apiserver\n    - --service-node-port-range=1-65535#" /etc/kubernetes/manifests/kube-apiserver.yaml
-    kubectl apply -f /etc/kubernetes/manifests/kube-apiserver.yaml
 fi
 
 # 查看 kubelet 情况
