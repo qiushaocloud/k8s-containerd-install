@@ -4,7 +4,7 @@ local_ip=''
 
 function getIpAddr(){
 	# 获取IP命令
-	ipaddr=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|grep -vE "*.*.*.0 |*.*.*.1 |*.*.*.255 "|awk '{print $2}'|tr -d "addr:"​`
+	ipaddr=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|grep -vE "10.244.*.* |10.1.*.* |*.*.*.1 |*.*.*.255 "|awk '{print $2}'|tr -d "addr:"​`
 	array=(`echo $ipaddr | tr '\n' ' '` ) 	# IP地址分割，区分是否多网卡
 	#array=(172.20.32.214 192.168.1.10);
 	num=${#array[@]}  						#获取数组元素的个数
