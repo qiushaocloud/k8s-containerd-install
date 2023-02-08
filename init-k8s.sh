@@ -68,8 +68,9 @@ CHECK_INIT_OK_STR=`grep "kubeadm join " kubeadm-init.log`
 if [ "$CHECK_INIT_OK_STR" != "" ]; then
     echo "kubeadm init success"
     
-    echo "cp files to $HOME/.kube"
+    rm -rf $HOME/.kube
     mkdir -p $HOME/.kube
+    echo "cp files to $HOME/.kube"
     cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     chown $(id -u):$(id -g) $HOME/.kube/config
     export KUBECONFIG=/etc/kubernetes/admin.conf
