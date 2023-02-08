@@ -1,0 +1,29 @@
+alias k='kubectl'
+
+# 切换命名空间
+alias kcd='kubectl config set-context $(kubectl config current-context) --namespace'
+
+alias kg='kubectl get'
+alias kgpo='kubectl get pods'
+alias kgdep='kubectl get deployment'
+alias kgcm='kubectl get configmap'
+alias kgsvc='kubectl get service'
+alias kgns='kubectl get namespaces'
+alias kgno='kubectl get nodes'
+alias kgposl='kubectl get pods --show-labels'
+
+alias kd='kubectl describe'
+alias kdno='kubectl describe nodes'
+alias kdsvc='kubectl describe service'
+alias kdns='kubectl describe namespaces'
+
+alias krm='kubectl delete'
+alias krmpo='kubectl delete pods'
+alias krmsvc='kubectl delete service'
+alias krmcm='kubectl delete configmap'
+alias krmns='kubectl delete namespaces'
+alias krmdep='kubectl delete deployment'
+
+alias ka='kubectl apply --recursive -f'
+
+alias kex='kubectl exec -i -t'
