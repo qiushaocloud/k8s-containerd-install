@@ -28,7 +28,13 @@ EOF
 ### k8s master 节点 init 集群
 1. 拷贝 env.tpl 为 .env, 并且根据自己情况修改里面的配置，拷贝命令: `cp env.tpl .env`
 2. 执行命令 init 集群: `bash init-k8s.sh` 
-3. 保存好 init 完后 join k8s 命令(即: kubeadm join 部分)，node 节点需要用该命令加入 k8s【注意：kubeadm join 需要加上 --cri-socket unix:///run/containerd/containerd.sock】, 例如: 
+3. 查看 k8s node 节点加入的命令: `cat k8s-node-join-info`，得到的信息例如: 
+``` shell
+kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
+    --discovery-token-ca-cert-hash sha256:36kiuydcf921ff6dhg6y5471857bfe9b529f6datrey0825ae1add79e7aefd1c2 \
+    --cri-socket unix:///run/containerd/containerd.sock
+```
+4. 您也可以从 kubeadm-init.log 中获取 join k8s 命令(即: kubeadm join 部分)，node 节点需要用该命令加入 k8s【注意：kubeadm join 需要加上 --cri-socket unix:///run/containerd/containerd.sock】, 例如: 
 ``` shell
 kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
     --discovery-token-ca-cert-hash sha256:36kiuydcf921ff6dhg6y5471857bfe9b529f6datrey0825ae1add79e7aefd1c2 \

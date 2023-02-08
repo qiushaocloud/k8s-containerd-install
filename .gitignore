@@ -7,3 +7,5 @@ kubeadm-config.yml
 calico.yaml
 metallb-configMap.yaml
 cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+k8s-node-need-files.tgz
+k8s-node-join-info
