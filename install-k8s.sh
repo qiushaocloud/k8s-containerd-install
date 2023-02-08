@@ -78,7 +78,7 @@ if [ -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
   if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
     echo "exit cri-containerd-cni-1.6.16-linux-amd64.tar.gz file"
   else
-    echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l
+    echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l`
     rm -rf cri-containerd-cni-1.6.16-linux-amd64.tar.gz
   fi
 fi
@@ -251,7 +251,7 @@ if [ -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
   if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
     echo "exit cri-containerd-cni-1.6.16-linux-amd64.tar.gz file"
   else
-    echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l
+    echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l`
     rm -rf cri-containerd-cni-1.6.16-linux-amd64.tar.gz
   fi
 fi
