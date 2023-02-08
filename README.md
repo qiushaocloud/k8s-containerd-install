@@ -27,6 +27,9 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
     --cri-socket unix:///run/containerd/containerd.sock
 ```
 
+### k8s master 安装 helm
+1. 运行 `bash install-helm.sh`
+
 ### k8s node 节点加入集群
 1. 使用 k8s master 节点 init 完后的 kubeadm join 命令加入集群 【注意：join 需要加上 --cri-socket unix://var/run/cri-dockerd.sock】, 例如:
 ``` shell
