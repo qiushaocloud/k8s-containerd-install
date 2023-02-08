@@ -21,7 +21,7 @@ nodeRegistration:
   name: <MY_HOSTNAME>
   taints:
   - effect: NoSchedule
-    key: node-role.kubernetes.io/master
+    key: node-role.kubernetes.io/control-plane
 ---
 apiServer:
   timeoutForControlPlane: 4m0s
