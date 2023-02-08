@@ -78,10 +78,6 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> $HOME/.bashrc
     source $HOME/.bashrc
 
-    echo "set service-node-port-range=1-65535 to /etc/kubernetes/manifests/kube-apiserver.yaml"
-    sed -i "/- --service-node-port-range=1-65535/d" /etc/kubernetes/manifests/kube-apiserver.yaml
-    sed -i "s#- kube-apiserver#- kube-apiserver\n    - --service-node-port-range=1-65535#" /etc/kubernetes/manifests/kube-apiserver.yaml
-
     if [ "$IS_USE_FLANNEL" == "1" ]; then
         echo "安装k8s kube-flannel 网络"
         kubectl apply -f kube-flannel.yml
@@ -103,6 +99,11 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     sed -i "/kubectl_aliases/d" ~/.bashrc
     echo "[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases" >> ~/.bashrc
     source ~/.bashrc
+
+    echo "set service-node-port-range=1-65535 to /etc/kubernetes/manifests/kube-apiserver.yaml"
+    sed -i "/- --service-node-port-range=1-65535/d" /etc/kubernetes/manifests/kube-apiserver.yaml
+    sed -i "s#- kube-apiserver#- kube-apiserver\n    - --service-node-port-range=1-65535#" /etc/kubernetes/manifests/kube-apiserver.yaml
+    kubectl apply -f /etc/kubernetes/manifests/kube-apiserver.yaml
 fi
 
 # 查看 kubelet 情况
