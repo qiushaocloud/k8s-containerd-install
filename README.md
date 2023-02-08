@@ -14,6 +14,10 @@ cat >> /etc/hosts << EOF
 EOF
 ```
 
+### k8s node 节点所需要的文件可以单独拷贝过去
+1. 执行拷贝命令: `bash cp-k8s-node-need-files.sh`
+2. 将文件 k8s-node-need-files.tgz 拷贝 k8s node 节点上
+
 ###  k8s 所有节点(即: master 和 node) 安装 k8s 所需环境
 1. 执行命令安装 k8s 环境: `bash install-k8s.sh`
 2. 执行命令: `source ~/.bashrc`
