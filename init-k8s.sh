@@ -71,7 +71,8 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     echo "add kubeadm join info to k8s-node-join-info"
     echo "`cat kubeadm-init.log | grep "kubeadm join" -A 2`\\" > k8s-node-join-info
     echo "        --cri-socket unix:///run/containerd/containerd.sock" >> k8s-node-join-info
-    echo "k8s-node-join-info:"`cat k8s-node-join-info`
+    echo "k8s-node-join-info:"
+    cat k8s-node-join-info
 
     rm -rf $HOME/.kube
     mkdir -p $HOME/.kube
