@@ -74,6 +74,12 @@ if [ "`grep "ip_vs" /etc/modules`" != "" ]; then
 fi
 
 echo 配置containerd
+if [ ! -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
+  echo "doanload cri-containerd-cni-1.6.16-linux-amd64.tar.gz from github"
+  # wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  echo "download finsh, ls -l:"`ls -l`
+fi
 echo cri-containerd-cni-1.6.16-linux-amd64.tar.gz 解压到根目录
 tar -xvf cri-containerd-cni-1.6.16-linux-amd64.tar.gz -C /
 
