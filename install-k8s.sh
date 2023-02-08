@@ -74,11 +74,24 @@ if [ "`grep "ip_vs" /etc/modules`" != "" ]; then
 fi
 
 echo 配置containerd
+if [ -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+    echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l
+    rm -rf cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  fi
+fi
+
 if [ ! -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
-  echo "doanload cri-containerd-cni-1.6.16-linux-amd64.tar.gz"
-  # wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz
-  wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz
-  echo "download finsh, ls -l:"`ls -l`
+  echo "start download cri-containerd-cni-1.6.16-linux-amd64.tar.gz from github"
+  wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+    echo 'download finsh from github'
+  else
+    echo "download failure from github, need wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz"
+    wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  fi
+
+  echo "file download finsh, ls -l:"`ls -l`
 fi
 echo cri-containerd-cni-1.6.16-linux-amd64.tar.gz 解压到根目录
 tar -xvf cri-containerd-cni-1.6.16-linux-amd64.tar.gz -C /
@@ -232,11 +245,24 @@ rpm -ivh libseccomp-2.5.1-1.el8.x86_64.rpm
 rpm -qa | grep libseccomp
 
 echo 配置containerd
+if [ -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+    echo "exist cri-containerd-cni-1.6.16-linux-amd64.tar.gz file, but file error, need remove file, ls -l:"`ls -l
+    rm -rf cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  fi
+fi
+
 if [ ! -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
-  echo "doanload cri-containerd-cni-1.6.16-linux-amd64.tar.gz"
-  # wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz
-  wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz
-  echo "download finsh, ls -l:"`ls -l`
+  echo "start download cri-containerd-cni-1.6.16-linux-amd64.tar.gz from github"
+  wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` > 120847122 ]; then
+    echo 'download finsh from github'
+  else
+    echo "download failure from github, need wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz"
+    wget https://www.qiushaocloud.top/common-static/k8s-files/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  fi
+
+  echo "file download finsh, ls -l:"`ls -l`
 fi
 echo cri-containerd-cni-1.6.16-linux-amd64.tar.gz 解压到根目录
 tar -xvf cri-containerd-cni-1.6.16-linux-amd64.tar.gz -C /
