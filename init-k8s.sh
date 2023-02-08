@@ -30,7 +30,7 @@ if [ "$INTERFACE_NAME" != "" ]; then
     sed -i "s/<INTERFACE_NAME>/$INTERFACE_NAME/g" calico.yaml
 else
     sed -i "/指定网卡/d" calico.yaml
-    sed -i "/<IP_AUTODETECTION_METHOD>/d" calico.yaml
+    sed -i "/IP_AUTODETECTION_METHOD/d" calico.yaml
     sed -i "/<INTERFACE_NAME>/d" calico.yaml
 fi
 
