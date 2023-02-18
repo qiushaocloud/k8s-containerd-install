@@ -65,8 +65,9 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
 4. 执行命令：`bash apply.sh`
 
 ### 使用 nerdctl 代替 docker 【根据自己需求看是否安装】
-1. 解压缩: `tar zxvf nerdctl-1.2.0-linux-amd64.tar -C /usr/local`
-2. 如果 nerdctl 不习惯, 设置别名为 docker
+1. 解压缩: `tar -xvf nerdctl-1.2.0-linux-amd64.tar -C /usr/local`
+2. 设置链接: `ln -s /usr/local/nerdctl /usr/bin/nerdctl`
+3. 如果 nerdctl 不习惯, 设置别名为 docker
 ```
 sed -i '/alias docker=/d' $HOME/.bashrc
 sed -i '/alias docker-compose=/d' $HOME/.bashrc
