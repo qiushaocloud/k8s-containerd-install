@@ -1,4 +1,4 @@
-# crictl ps -a|grep Exited|awk '{print $1}'|(xargs crictl rm -f || true)
+crictl ps -a|grep Exited|awk '{print $1}'|(xargs crictl rm -f || true)
 
 # if [ -f "kubeadm-config.yml" ]; then
     # echo "kubeadm reset -f --kubeconfig $PWD/kubeadm-config.yml --cri-socket unix:///run/containerd/containerd.sock"
