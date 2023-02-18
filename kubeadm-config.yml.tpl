@@ -19,9 +19,9 @@ nodeRegistration:
   imagePullPolicy: IfNotPresent
   # 节点名改成主节点的主机名
   name: <MY_HOSTNAME>
-  #taints:
-  #- effect: NoSchedule
-  #  key: node-role.kubernetes.io/control-plane
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
 ---
 apiServer:
   timeoutForControlPlane: 4m0s
