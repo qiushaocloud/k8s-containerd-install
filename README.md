@@ -64,7 +64,31 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
 3. 根据你自己的情况配置 metallb-configMap.yaml, 主要修改 addresses 部分
 4. 执行命令：`bash apply.sh`
 
+### 使用 nerdctl 代替 docker 【根据自己需求看是否安装】
+1. 解压缩: `tar zxvf nerdctl-1.2.0-linux-amd64.tar -C /usr/local`
+2. 如果 nerdctl 不习惯, 设置别名为 docker
+```
+sed -i '/alias docker=/d' $HOME/.bashrc
+sed -i '/alias docker-compose=/d' $HOME/.bashrc
+echo 'alias docker=nerdctl' >> $HOME/.bashrc
+echo 'alias docker-compose="nerdctl compose"' >> $HOME/.bashrc
+```
 
+### 安装 kubectl 命令补全工具(bash-completion) 【根据自己需求看是否安装】
+* centos 安装 bash-completion
+``` shell
+yum install bash-completion -y
+source /usr/share/bash-completion/bash_completion
+sed -i '/source <(kubectl completion bash)/d' ~/.bashrc
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
+* ubuntu 安装
+``` shell
+apt install bash-completion -y
+source /usr/share/bash-completion/bash_completion
+sed -i '/source <(kubectl completion bash)/d' ~/.bashrc
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
 
 #### 参与贡献
 

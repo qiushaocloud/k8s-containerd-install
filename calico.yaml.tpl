@@ -4567,7 +4567,7 @@ spec:
               value: "k8s,bgp"
             # 指定网卡
             - name: IP_AUTODETECTION_METHOD
-              value: "interface=<INTERFACE_NAME>" # INTERFACE_NAME为本地网卡名字
+              value: "<IP_AUTODETECTION_METHOD_VALUE>" # 用于指定网卡, 例如: interface=ens32 或者 can-reach=www.baidu.com
             # Auto-detect the BGP IP address.
             - name: IP
               value: "autodetect"

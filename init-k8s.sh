@@ -26,12 +26,12 @@ sed -i "s/<ADVERTISE_ADDRESS>/$apiserverAdvertiseAddress/g" kubeadm-config.yml
 sed -i "s/<BIND_PORT>/$apiserverBindPort/g" kubeadm-config.yml
 sed -i "s/<MY_HOSTNAME>/$MY_HOSTNAME/g" kubeadm-config.yml
 
-if [ "$INTERFACE_NAME" != "" ]; then
-    sed -i "s/<INTERFACE_NAME>/$INTERFACE_NAME/g" calico.yaml
+if [ "$IP_AUTODETECTION_METHOD_VALUE" != "" ]; then
+    sed -i "s/<IP_AUTODETECTION_METHOD_VALUE>/$IP_AUTODETECTION_METHOD_VALUE/g" calico.yaml
 else
     sed -i "/指定网卡/d" calico.yaml
     sed -i "/IP_AUTODETECTION_METHOD/d" calico.yaml
-    sed -i "/<INTERFACE_NAME>/d" calico.yaml
+    sed -i "/<IP_AUTODETECTION_METHOD_VALUE>/d" calico.yaml
 fi
 
 if [ "$controlPlaneEndpoint" != "" ]; then
@@ -87,8 +87,8 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     if [ "$IS_USE_FLANNEL" == "1" ]; then
         echo "安装k8s kube-flannel 网络"
         kubectl apply -f kube-flannel.yml
-    elif [ "$INTERFACE_NAME" == "" ]; then
-        echo "想要安装 calico 网络，但是没有设置 INTERFACE_NAME, 不允许使用 calico 网络，切换成 kube-flannel 网络"
+    elif [ "$IP_AUTODETECTION_METHOD_VALUE" == "" ]; then
+        echo "想要安装 calico 网络，但是没有设置 IP_AUTODETECTION_METHOD_VALUE, 不允许使用 calico 网络，切换成 kube-flannel 网络"
         echo "安装k8s kube-flannel 网络"
         kubectl apply -f kube-flannel.yml
     else
