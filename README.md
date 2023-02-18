@@ -72,6 +72,7 @@ sed -i '/alias docker=/d' $HOME/.bashrc
 sed -i '/alias docker-compose=/d' $HOME/.bashrc
 echo 'alias docker=nerdctl' >> $HOME/.bashrc
 echo 'alias docker-compose="nerdctl compose"' >> $HOME/.bashrc
+source $HOME/.bashrc
 ```
 
 ### 安装 kubectl 命令补全工具(bash-completion) 【根据自己需求看是否安装】
@@ -88,6 +89,7 @@ apt install bash-completion -y
 source /usr/share/bash-completion/bash_completion
 sed -i '/source <(kubectl completion bash)/d' ~/.bashrc
 echo "source <(kubectl completion bash)" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 #### 参与贡献
