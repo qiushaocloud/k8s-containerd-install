@@ -93,6 +93,41 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 source ~/.bashrc
 ```
 
+### ctr、crictl、nerdctl 以及 docker 对比
+* ctr、crict、docker 命令对比
+> ctr是由containerd提供的一个客户端工具。
+> crictl是CRI兼容的容器运行时命令接口，和containerd无关，由kubernetes提供，可以使用它来检查和调试k8s节点上的容器运行时和应用程序。
+
+| 命令               | docker         | ctr                            | crictl         |
+| ------------------ | -------------- | ------------------------------ | -------------- |
+| 查看镜像           | docker images  | ctr image ls                   | crictl images  |
+| 拉取镜像           | docker pull    | ctr image pull                 | crictl pull    |
+| 推送镜像           | docker push    | ctr image push                 | 无             |
+| 删除镜像           | docker rmi     | ctr image rm                   | crictl rmi     |
+| 导入镜像           | docker load    | ctr image import               | 无             |
+| 导出镜像           | docker save    | ctr image export               | 无             |
+| 修改镜像标签       | docker tag     | ctr image tag                  | 无             |
+| 创建一个新的容器   | docker create  | ctr container create           | crictl create  |
+| 运行一个新的容器   | docker run     | ctr run                        | 无             |
+| 删除容器           | docker rm      | ctr container rm               | crictl rm      |
+| 查看运行容器       | docker ps      | ctr task ls / ctr container ls | crictl ps      |
+| 启动已有容器       | docker start   | ctr task start                 | crictl start   |
+| 关闭已有容器       | docker stop    | ctr task kill                  | crictl stop    |
+| 在容器内部执行命令 | docker exec    | 无                             | crictl exec    |
+| 查看容器内信息     | docker inspect | ctr container info             | crictl inspect |
+| 查看容器日志       | docker logs    | 无                             | crictl logs    |
+| 查看容器资源       | docker stats   | 无                             | crictl stats   |
+* nerdctl 与 docker 对比
+> nerdctl 是与 Docker 兼容的 CLI for Containerd，其支持 compose
+> nerdctl 和 docker命令行语法类似
+
+``` text
+nerdctl 发布包含两安装版本：
+- Mininal：仅包含nerdctl二进制文件以及rootless模式下的辅助安装脚本
+- Full：包含containerd、CNI、runC、BuildKit等完整组件
+```
+
+
 #### 参与贡献
 
 1.  Fork 本仓库
