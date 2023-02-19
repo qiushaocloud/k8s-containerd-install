@@ -42,6 +42,7 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
 6. 因为重新设置 kube-apiserver 端口范围，服务会重启，需要等待一段时间，等服务重启完，把网络组件安装完就行了
 7. 等待一段时间后，执行命令查看 pod 是否都已经 Ready 了, 命令: `kubectl get pod -A`
 8. 如果长时间不好，可以尝试将机器重新启动下
+9. 执行命令: `source ~/.bashrc`
 
 ### k8s master 安装 helm
 1. 运行 `bash install-helm.sh`
