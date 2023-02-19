@@ -94,8 +94,8 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     else
         echo "calico 需要镜像:"`cat calico.yaml |grep docker.io|awk {'print $2'}`
         echo "手动拉取 calico 镜像"
-        for i in `cat calico.yaml |grep docker.io|awk {'print $2'}`;do ctr images pull $i;done
-        echo "镜像列表:"`ctr images ls`
+        for i in `cat calico.yaml |grep docker.io|awk {'print $2'}`;do crictl pull $i;done
+        echo "镜像列表:"`crictl images`
         echo "安装 k8s calico 网络"
         kubectl apply -f calico.yaml
     fi

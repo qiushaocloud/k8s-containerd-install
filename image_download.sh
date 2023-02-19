@@ -15,7 +15,5 @@ kubeadm config images pull --config kubeadm-config.yml
 
 # for i in $images_list
 # do
-#     docker pull $i
+#     crictl pull $i
 # done
-
-#docker save -o k8s-1-26-0.tar $images_list
