@@ -22,14 +22,11 @@ EOF
 ###  k8s 所有节点(即: master 和 node) 安装 k8s 所需环境
 1. 执行命令安装 k8s 环境: `bash install-k8s.sh`
 2. 执行命令: `source ~/.bashrc`
-3. 因为重新设置 kube-apiserver 端口范围，服务会重启，需要等待一段时间，等服务重启完，把网络组件安装完就行了
-4. 等待一段时间后，执行命令查看 pod 是否都已经 Ready 了, 命令: `kubectl get pod -A`
-5. 如果长时间不好，可以尝试将机器重新启动下
 
 ### k8s master 节点 init 集群
 1. 拷贝 env.tpl 为 .env, 并且根据自己情况修改里面的配置，拷贝命令: `cp env.tpl .env`
-2. 执行命令 reset 集群: `bash reset-k8s.sh` 
-3. 执行命令 init 集群: `bash init-k8s.sh` 
+2. 执行命令 reset 集群: `bash reset-k8s.sh`
+3. 执行命令 init 集群: `bash init-k8s.sh`
 4. 查看 k8s node 节点加入的命令: `cat k8s-node-join-info`，得到的信息例如: 
 ``` shell
 kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
@@ -42,6 +39,9 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
     --discovery-token-ca-cert-hash sha256:36kiuydcf921ff6dhg6y5471857bfe9b529f6datrey0825ae1add79e7aefd1c2 \
     --cri-socket unix:///run/containerd/containerd.sock
 ```
+6. 因为重新设置 kube-apiserver 端口范围，服务会重启，需要等待一段时间，等服务重启完，把网络组件安装完就行了
+7. 等待一段时间后，执行命令查看 pod 是否都已经 Ready 了, 命令: `kubectl get pod -A`
+8. 如果长时间不好，可以尝试将机器重新启动下
 
 ### k8s master 安装 helm
 1. 运行 `bash install-helm.sh`
