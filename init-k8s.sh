@@ -62,6 +62,10 @@ else
     fi
 fi
 
+echo "start image download"
+bash image_download.sh
+
+echo "start kubeadm init"
 kubeadm init --config=$PWD/kubeadm-config.yml --upload-certs | tee kubeadm-init.log
 
 CHECK_INIT_OK_STR=`grep "kubeadm join " kubeadm-init.log`
