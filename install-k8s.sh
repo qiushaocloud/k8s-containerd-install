@@ -77,7 +77,7 @@ echo 配置containerd
 
 if [ ! -f "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" ]; then
   echo "start download cri-containerd-cni-1.6.16-linux-amd64.tar.gz from github"
-  wget -t 1 -T 300 https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
+  wget -t 0 -T 300 https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz -O cri-containerd-cni-1.6.16-linux-amd64.tar.gz
   if [ `ls -l | grep "cri-containerd-cni-1.6.16-linux-amd64.tar.gz" | grep -v grep | awk -F " " '{print $5}'` -gt 120847122 ]; then
     echo 'download finsh from github'
   else
