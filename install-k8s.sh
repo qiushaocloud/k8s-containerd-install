@@ -216,7 +216,7 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 
 echo 应用sysctl参数而不重新启动
-sysctl --udystem
+sysctl --system
 
 echo 开启ipvs支持
 yum install -y ipvsadm ipset
