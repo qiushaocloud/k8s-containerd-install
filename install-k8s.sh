@@ -40,7 +40,7 @@ echo 永久关闭swap
 sed -i '/swap/s/^/#/' /etc/fstab
 
 echo 禁用默认配置的iptables防火墙服务
-ufw diable
+ufw disable
 ufw status
 
 echo 加载模块
@@ -216,7 +216,7 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 
 echo 应用sysctl参数而不重新启动
-sysctl --udystem
+sysctl --system
 
 echo 开启ipvs支持
 yum install -y ipvsadm ipset
