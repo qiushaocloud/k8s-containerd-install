@@ -91,10 +91,10 @@ if [ "$CHECK_INIT_OK_STR" != "" ]; then
     if [ "$IS_USE_FLANNEL" == "1" ]; then
         echo "安装k8s kube-flannel 网络"
         kubectl apply -f kube-flannel.yml
-    elif [ "$IP_AUTODETECTION_METHOD_VALUE" == "" ]; then
-        echo "想要安装 calico 网络，但是没有设置 IP_AUTODETECTION_METHOD_VALUE, 不允许使用 calico 网络，切换成 kube-flannel 网络"
-        echo "安装k8s kube-flannel 网络"
-        kubectl apply -f kube-flannel.yml
+    # elif [ "$IP_AUTODETECTION_METHOD_VALUE" == "" ]; then
+    #     echo "想要安装 calico 网络，但是没有设置 IP_AUTODETECTION_METHOD_VALUE, 不允许使用 calico 网络，切换成 kube-flannel 网络"
+    #     echo "安装k8s kube-flannel 网络"
+    #     kubectl apply -f kube-flannel.yml
     else
         echo "calico 需要镜像:"`cat calico.yaml |grep docker.io|awk {'print $2'}`
         echo "手动拉取 calico 镜像"
