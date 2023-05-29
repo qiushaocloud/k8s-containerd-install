@@ -39,7 +39,7 @@ etcd:
 imageRepository: registry.aliyuncs.com/google_containers
 kind: ClusterConfiguration
 # 修改版本号 必须对应
-kubernetesVersion: 1.26.0
+kubernetesVersion: 1.26.5
 networking:
   # 新增该配置 固定为 10.244.0.0/16，用于后续 Calico网络插件
   podSubnet: 10.244.0.0/16

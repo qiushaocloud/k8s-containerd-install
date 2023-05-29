@@ -1,6 +1,6 @@
 #!/bin/bash
 
-K8S_VERSION='1.26.0'
+K8S_VERSION='1.26.5'
 echo "K8S_VERSION: $K8S_VERSION"
 
 OS_STR=`cat /etc/issue | grep -v grep | grep -E "Ubuntu|Centos" | awk -F ' ' '{print $1}'`
