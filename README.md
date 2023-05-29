@@ -67,8 +67,9 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
 
 ### 安装配置 ingress-nginx 【根据自己需求看是否安装】
 1. 进入 ingress-nginx
-2. 设置 label: `bash set-master-label-ingress.sh`
-3. 安装: `kubectl apply -f deploy.yaml`
+2. 让 master 也能分配: `bash set-master-PreferNoSchedule.sh`
+3. 设置 label: `bash set-master-label-ingress.sh`
+4. 安装: `kubectl apply -f deploy.yaml`
 
 ### 安装配置 metallb【根据自己需求看是否安装，另外需要看你的网络是否支持 metallb 所需要求】
 1. 进入 metallb-system
