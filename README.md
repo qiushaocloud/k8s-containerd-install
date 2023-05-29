@@ -67,7 +67,7 @@ kubeadm join 192.168.1.xx:6443 --token abcded.1234567890abcdef \
 
 ### 安装配置 ingress-nginx 【根据自己需求看是否安装】
 1. 进入 ingress-nginx
-2. 让 master 也能分配: `bash set-master-PreferNoSchedule.sh`
+2. 设置 master 污点 NoSchedule: `bash set-master-NoSchedule.sh`
 3. 设置 label: `bash set-master-label-ingress.sh`
 4. 安装: `kubectl apply -f deploy.yaml`
 
