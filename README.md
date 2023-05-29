@@ -5,13 +5,9 @@ ubuntu/centos 安装 k8s 集群所需环境，k8s 使用 1.26.5, 容器使用 co
 
 
 ### 实验机器配置
-
 * ubuntu 实验机器
-
   > 3台 ubuntu server 22.04
-
 * centos 实验机器
-
   > 暂未验证 centos 的安装
 
 
