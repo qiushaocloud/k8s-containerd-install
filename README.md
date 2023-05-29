@@ -2,6 +2,20 @@
 ubuntu/centos 安装 k8s 集群所需环境，k8s 使用 1.26.5, 容器使用 containerd(不使用docker)，使用 ipvs。 
 支持 init/join k8s 集群，安装网络组件 calico/flannel，安装配置 ingress-nginx，安装配置 metallb
 
+
+
+### 实验机器配置
+
+* ubuntu 实验机器
+
+  > 3台 ubuntu server 22.04
+
+* centos 实验机器
+
+  > 暂未验证 centos 的安装
+
+
+
 ### 配置 /etc/hosts, 需要根据您的实际情况配置, k8s-master、k8s-node01、k8s-node02、k8s-nodexx 您自行修改成您机器的 hostname 以及 ip 地址【k8s 所有节点(即: master 和 node)都需要配置】
 ``` shell
 sed -i "/k8s-master/d" /etc/hosts
