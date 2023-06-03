@@ -3,19 +3,6 @@
 K8S_VERSION='1.26.5'
 echo "K8S_VERSION: $K8S_VERSION"
 
-OS_NAME=`cat /etc/issue | grep -v grep | grep -E "Ubuntu|Centos" | awk -F ' ' '{print $1}'`
-echo "OS_NAME: $OS_NAME"
-echo `cat /etc/issue`
-
-if [ "$OS_NAME" == "Ubuntu" ]; then
-  echo "this is Ubuntu OS"
-elif [ "$OS_NAME" == "Centos" ]; then
-  echo "this is Centos OS"
-else
-  echo "this is void OS, OS_NAME: $OS_NAME"
-  exit 1
-fi
-
 OS_NAME='Unknown'
 
 if [[ "$(uname)" == "Linux" ]]; then
