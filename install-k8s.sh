@@ -3,21 +3,41 @@
 K8S_VERSION='1.26.5'
 echo "K8S_VERSION: $K8S_VERSION"
 
-OS_STR=`cat /etc/issue | grep -v grep | grep -E "Ubuntu|Centos" | awk -F ' ' '{print $1}'`
-echo "OS_STR: $OS_STR"
+OS_NAME=`cat /etc/issue | grep -v grep | grep -E "Ubuntu|Centos" | awk -F ' ' '{print $1}'`
+echo "OS_NAME: $OS_NAME"
 echo `cat /etc/issue`
 
-if [ "$OS_STR" == "Ubuntu" ]; then
+if [ "$OS_NAME" == "Ubuntu" ]; then
   echo "this is Ubuntu OS"
-elif [ "$OS_STR" == "Centos" ]; then
+elif [ "$OS_NAME" == "Centos" ]; then
   echo "this is Centos OS"
 else
-  echo "this is void OS, OS_STR: $OS_STR"
+  echo "this is void OS, OS_NAME: $OS_NAME"
   exit 1
 fi
 
+OS_NAME='Unknown'
 
-if [ "$OS_STR" == "Ubuntu" ]; then
+if [[ "$(uname)" == "Linux" ]]; then
+  if [[ -f "/etc/lsb-release" ]]; then
+    echo "Ubuntu"
+    OS_NAME='Ubuntu'
+  elif [[ -f "/etc/redhat-release" ]]; then
+    echo "CentOS"
+    OS_NAME='Centos'
+  else
+    echo "Unknown Linux distribution"
+    exit 1
+  fi
+else
+  echo "Unsupported operating system"
+  exit 1
+fi
+
+echo "OS_NAME: $OS_NAME"
+
+
+if [ "$OS_NAME" == "Ubuntu" ]; then
 
 echo "===================== ubuntu install k8s start ========================="
 
@@ -159,7 +179,7 @@ echo "===================== ubuntu install k8s end ========================="
 
 fi
 
-if [ "$OS_STR" == "Centos" ]; then
+if [ "$OS_NAME" == "Centos" ]; then
 
 echo "===================== centos install k8s start ========================="
 
