@@ -335,7 +335,7 @@ EOF
 # --disableexcludes 禁掉除了kubernetes之外的别的仓库
 # 由于官网未开放同步方式, 替换成阿里源后可能会有索引 gpg 检查失败的情况, 这时请带上`--nogpgcheck`选项安装
 echo 指定安装版本,K8S_VERSION: $K8S_VERSION
-yum update
+yum update -y
 yum install -y kubelet-$K8S_VERSION kubeadm-$K8S_VERSION kubectl-$K8S_VERSION --disableexcludes=kubernetes --nogpgcheck
 
 systemctl daemon-reload && systemctl restart kubelet
