@@ -71,7 +71,9 @@ echo 应用sysctl参数而不重新启动
 sysctl --system
 
 echo 开启ipvs支持
+apt update
 apt install -y ipvsadm ipset
+apt install -y wget
 echo ipvs临时生效
 for i in $(ls /lib/modules/$(uname -r)/kernel/net/netfilter/ipvs|grep -o "^[^.]*");do echo $i; /sbin/modinfo -F filename $i >/dev/null 2>&1 && /sbin/modprobe $i; done
 
@@ -226,6 +228,8 @@ echo 应用sysctl参数而不重新启动
 sysctl --system
 
 echo 开启ipvs支持
+yum update -y
+yum install -y wget
 yum install -y ipvsadm ipset
 # 临时生效
 modprobe -- ip_vs
