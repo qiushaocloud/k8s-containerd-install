@@ -7,10 +7,10 @@ function getIpAddr(){
 	if [[ "$(uname)" == "Linux" ]]; then
 		if [[ -f "/etc/lsb-release" ]]; then
 			echo "Ubuntu"
-			ipaddr=$(ifconfig -a | grep 'inet ' | awk '{print $2}' | cut -d ':' -f2 | grep -vE "127.0.0.1")
+			ipaddr=$(ifconfig -a | grep 'inet ' | awk '{print $2}' | cut -d ':' -f2 | grep -vE "127.0.0.1|*.*.*.1|*.*.*.255")
 		elif [[ -f "/etc/redhat-release" ]]; then
 			echo "CentOS"
-			ipaddr=$(ip addr show | grep 'inet ' | awk '{print $2}' | cut -d '/' -f1 | grep -vE "127.0.0.1")
+			ipaddr=$(ip addr show | grep 'inet ' | awk '{print $2}' | cut -d '/' -f1 | grep -vE "127.0.0.1|*.*.*.1|*.*.*.255")
 		else
 			echo "Unknown Linux distribution"
 			exit 1
