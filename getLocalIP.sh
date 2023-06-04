@@ -4,7 +4,21 @@ local_ip=''
 
 function getIpAddr(){
 	# 获取IP命令
-	ipaddr=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|grep -vE "10.244.*.* |10.1.*.* |*.*.*.1 |*.*.*.255 "|awk '{print $2}'|tr -d "addr:"​`
+	if [[ "$(uname)" == "Linux" ]]; then
+		if [[ -f "/etc/lsb-release" ]]; then
+			echo "Ubuntu"
+			ipaddr=$(ifconfig -a | grep 'inet ' | awk '{print $2}' | cut -d ':' -f2 | grep -vE "127.0.0.1")
+		elif [[ -f "/etc/redhat-release" ]]; then
+			echo "CentOS"
+			ipaddr=$(ip addr show | grep 'inet ' | awk '{print $2}' | cut -d '/' -f1 | grep -vE "127.0.0.1")
+		else
+			echo "Unknown Linux distribution"
+			exit 1
+		fi
+	else
+		echo "Unsupported operating system"
+		exit 1
+	fi
 	array=(`echo $ipaddr | tr '\n' ' '` ) 	# IP地址分割，区分是否多网卡
 	#array=(172.20.32.214 192.168.1.10);
 	num=${#array[@]}  						#获取数组元素的个数
