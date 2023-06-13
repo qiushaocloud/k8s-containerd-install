@@ -32,7 +32,7 @@ EOF
 ###  k8s 所有节点(即: master 和 node) 安装 k8s 所需环境
 1. 执行命令安装 k8s 环境: `bash install-k8s.sh`
 2. 执行命令: `source ~/.bashrc`
-3. 如果需要配置镜像加速，请修改文件`/etc/containerd/config.toml`，修改完配置后重启 containerd: `systemctl restart containerd`
+3. 如果需要配置镜像加速，请修改文件`/etc/containerd/config.toml`，修改完配置后重启 containerd: `systemctl daemon-reload && systemctl restart containerd`
 ```toml
       # 找到 [plugins."io.containerd.grpc.v1.cri".registry.mirrors] 这一行进行修改，如下: 
       [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
