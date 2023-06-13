@@ -34,7 +34,7 @@ EOF
 2. 执行命令: `source ~/.bashrc`
 3. 如果需要配置镜像加速，请修改文件`/etc/containerd/config.toml`，修改完配置后重启 containerd: `systemctl daemon-reload && systemctl stop containerd && systemctl start containerd`
 ```toml
-      # 加速镜像地址可以参考: https://www.qiushaocloud.top/2023/05/29/-zhuan-zai--tong-guo-docker-compose-kuai-su-bu-shu-harbor.html
+      # 加速镜像地址可以参考: https://www.qiushaocloud.top/2023/06/14/github-zi-yuan-zhuan-zai-dockerhub-jing-xiang-jia-su-qi.html
       # 找到 [plugins."io.containerd.grpc.v1.cri".registry.mirrors] 这一行进行修改，如下: 
       [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
