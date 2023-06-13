@@ -32,6 +32,13 @@ EOF
 ###  k8s 所有节点(即: master 和 node) 安装 k8s 所需环境
 1. 执行命令安装 k8s 环境: `bash install-k8s.sh`
 2. 执行命令: `source ~/.bashrc`
+3. 如果需要配置镜像加速，请修改文件`/etc/containerd/config.toml`
+```toml
+      # 找到 [plugins."io.containerd.grpc.v1.cri".registry.mirrors] 这一行进行修改，如下: 
+      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+          endpoint = ["<加速镜像1地址>","<加速镜像2地址>"]
+```
 
 ### k8s master 节点 init 集群
 1. 拷贝 env.tpl 为 .env, 并且根据自己情况修改里面的配置，拷贝命令: `cp env.tpl .env`

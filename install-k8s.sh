@@ -121,10 +121,9 @@ sed -i "s#k8s.gcr.io/pause#registry.aliyuncs.com/google_containers/pause#g" /etc
 #sed -i "s#registry.k8s.io/pause:3.6#registry.aliyuncs.com/google_containers/pause:3.9#g" /etc/containerd/config.toml
 sed -i "s#registry.k8s.io/pause#registry.aliyuncs.com/google_containers/pause#g" /etc/containerd/config.toml
 
-echo 镜像加速
-sed -i '/\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"\]/d' /etc/containerd/config.toml
-sed -i '/endpoint = \[\"https:\/\/registry.aliyuncs.com\"\]/d' /etc/containerd/config.toml
-sed -i 's#\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors\]#\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors\]\n        \[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"\]\n          endpoint = \[\"https:\/\/registry.aliyuncs.com\"\]#' /etc/containerd/config.toml
+# echo 镜像加速
+# sed -i '/\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"\]/,/endpoint/d' /etc/containerd/config.toml
+# sed -i 's#\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors\]#\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors\]\n        \[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"\]\n          endpoint = \[\"https:\/\/hub-mirror.c.163.com\"\]#' /etc/containerd/config.toml
 
 echo 配置containerd cgroup驱动程序systemd
 sed -i 's#SystemdCgroup = false#SystemdCgroup = true#g' /etc/containerd/config.toml
