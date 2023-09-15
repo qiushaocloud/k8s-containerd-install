@@ -1,0 +1,9 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: first-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  # 可分配的 IP 地址,可以指定多个，包括 ipv4、ipv6
+  - 192.168.87.210-192.168.87.250
