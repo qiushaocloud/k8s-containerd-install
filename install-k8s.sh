@@ -74,13 +74,26 @@ echo 开启ipvs支持
 apt update
 apt install -y ipvsadm ipset
 apt install -y wget
-echo ipvs临时生效
-for i in $(ls /lib/modules/$(uname -r)/kernel/net/netfilter/ipvs|grep -o "^[^.]*");do echo $i; /sbin/modinfo -F filename $i >/dev/null 2>&1 && /sbin/modprobe $i; done
 
-echo ipvs永久生效
-if [ "`grep "ip_vs" /etc/modules`" != "" ]; then
-  ls /lib/modules/$(uname -r)/kernel/net/netfilter/ipvs|grep -o "^[^.]*" >> /etc/modules
-fi
+echo "ipvs临时生效"
+# 加载所有ipvs模块
+for i in $(ls /lib/modules/$(uname -r)/kernel/net/netfilter/ipvs | grep -o "^[^.]*"); do
+    echo "加载模块: $i"
+    /sbin/modinfo -F filename $i >/dev/null 2>&1 && /sbin/modprobe $i
+done
+
+echo "ipvs永久生效"
+# 检查并添加缺失的模块到/etc/modules
+for module in $(ls /lib/modules/$(uname -r)/kernel/net/netfilter/ipvs | grep -o "^[^.]*"); do
+    if ! grep -q "^$module$" /etc/modules; then
+        echo "添加模块 $module 到 /etc/modules"
+        echo "$module" >> /etc/modules
+    else
+        echo "模块 $module 已存在"
+    fi
+done
+
+echo "IPVS配置完成"
 
 echo 配置containerd
 
